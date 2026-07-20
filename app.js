@@ -96,7 +96,7 @@ function render(sameCustomer=false){
  $('caseTag').textContent=totalStages>1?`ПОКУПАТЕЛЬ ${turn+1} / 4 · ЭТАП ${stage+1} ИЗ ${totalStages}`:`ПОКУПАТЕЛЬ ${turn+1} / 4`;$('name').textContent=c.person;$('mood').textContent=c.mood;$('line').textContent=step.line;$('badge').textContent=totalStages>1?step.label:c.tag;
  customer.style.setProperty('--skin',c.skin);customer.style.setProperty('--coat',c.coat);customer.querySelector('.hair').style.background=c.hair;
  $('choices').className=`choices ${step.visual||''}`;$('choices').innerHTML=step.choices.map((choice,i)=>`<button class="choice" data-i="${i}"><b>${i+1}</b>${choice[5]?`<img src="${choice[5]}" alt="">`:''}<span>${choice[0]}${choice[6]?`<small>${choice[6]}</small>`:''}</span></button>`).join('');
- $('queue').innerHTML='<i></i>'.repeat(3-turn);customer.className=sameCustomer?'customer':'customer enter';$('sound').hidden=!step.audio;$('repeatVoice').hidden=!step.audio||document.body.classList.contains('not-started');if(!document.body.classList.contains('not-started')){$('choices').querySelector('button')?.focus();playVoice(step)}
+ $('queue').innerHTML='<i></i>'.repeat(3-turn);customer.className=sameCustomer?'customer':'customer enter';$('sound').hidden=!step.audio;$('repeatVoice').hidden=!step.audio||document.body.classList.contains('not-started');if(!document.body.classList.contains('not-started')){$('line').focus({preventScroll:true});playVoice(step)}
 }
 function choose(index){
  const c=shifts[selectedShift].cases[turn],step=c.steps?.[stage]||c,choice=step.choices[index],lastStage=!c.steps||stage===c.steps.length-1;

@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>НЕ НАВРЕДИ — две смены</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="prototype.css">
+  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="prototype.css?v=2">
 </head>
 <body class="not-started">
   <main class="game">
@@ -43,7 +43,7 @@
     </section>
 
     <section class="hud">
-      <div class="case"><div class="case-head"><span id="caseTag">ПОКУПАТЕЛЬ 1 / 4</span><b id="name">МУЖЧИНА, ОКОЛО 27</b><small id="mood">ТОРОПИТСЯ</small></div><blockquote id="line"></blockquote></div>
+      <div class="case"><div class="case-head"><span id="caseTag">ПОКУПАТЕЛЬ 1 / 4</span><b id="name">МУЖЧИНА, ОКОЛО 27</b><small id="mood">ТОРОПИТСЯ</small></div><blockquote id="line" tabindex="-1"></blockquote></div>
       <div class="choices" id="choices"></div>
       <div class="stats">
         <div><span>ВЕРНЫЕ РЕШЕНИЯ</span><b id="score">0 / 4</b></div>
@@ -55,6 +55,6 @@
     <div class="result" id="result" role="status" aria-live="polite" hidden><p id="resultText"></p><button id="next">СЛЕДУЮЩИЙ ПОКУПАТЕЛЬ →</button></div>
     <div class="ending" id="ending" hidden><div><small>СМЕНА ОКОНЧЕНА</small><h1 id="endingTitle"></h1><p id="endingText"></p><aside id="recommendation"></aside><button id="restart">К СПИСКУ СМЕН</button></div></div>
   </main>
-  <script src="app.js"></script>
+  <script src="app.js?v=2"></script>
 </body>
 </html>
