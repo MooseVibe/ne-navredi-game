@@ -3,25 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>НЕ НАВРЕДИ — симулятор ночной аптеки</title>
+  <title>НЕ НАВРЕДИ — две смены</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="prototype.css">
 </head>
 <body class="not-started">
   <main class="game">
     <section class="intro" id="intro">
       <div class="intro-card">
-        <span class="intro-cross">+</span>
-        <small>СИМУЛЯТОР НОЧНОЙ АПТЕКИ</small>
+        <span class="intro-cross">+</span><small>СИМУЛЯТОР НОЧНОЙ АПТЕКИ</small>
         <h1>НЕ<br>НАВРЕДИ</h1>
-        <p>Шесть посетителей. Одна лицензия.<br>И ни одного простого решения.</p>
+        <p>Четыре покупателя. Одна смена.<br>С каждым вопросом сложнее.</p>
+        <div class="attempts"><span id="stars">★★☆</span><b id="attemptText">ДОСТУПНО 2 СМЕНЫ</b></div>
         <button id="start">НАЧАТЬ СМЕНУ <b>→</b></button>
-        <i>НАДЕНЬТЕ НАУШНИКИ</i>
+        <button class="secondary" id="changeShift">ВЫБРАТЬ СМЕНУ: <span id="shiftName">01</span></button>
+        <i>ЗВЕЗДА СПИШЕТСЯ ПОСЛЕ ПЕРВОГО ОТВЕТА</i>
+        <small class="prototype-note">ВНУТРЕННИЙ ПРОТОТИП · НЕ МЕДИЦИНСКАЯ РЕКОМЕНДАЦИЯ</small>
       </div>
     </section>
+
     <header class="topbar">
       <div class="brand"><span class="cross">+</span><span><b>НЕ НАВРЕДИ</b><small>АПТЕКА · НОЧНАЯ СМЕНА</small></span></div>
-      <div class="shift"><span>СМЕНА</span><b id="progress">01 / 06</b><i><em id="progressBar"></em></i></div>
-      <button class="sound" id="sound" aria-label="Включить или выключить звук">ЗВУК: ВКЛ</button>
+      <div class="shift"><span>СМЕНА <em id="shiftNumber">01</em></span><b id="progress">01 / 04</b><i><em id="progressBar"></em></i></div>
+      <div class="audio-controls"><button class="sound" id="repeatVoice" type="button" hidden>↻ РЕПЛИКА</button><button class="sound" id="sound" type="button" aria-pressed="true">ЗВУК: ВКЛ</button><div class="star-counter"><span id="topStars">★★☆</span><small>СМЕНЫ</small></div></div>
     </header>
 
     <section class="scene" id="scene">
@@ -39,21 +43,18 @@
     </section>
 
     <section class="hud">
-      <div class="case"><div class="case-head"><span id="caseTag">ПОСЕТИТЕЛЬ #01</span><b id="name">ИГОРЬ, 34</b><small id="mood">НЕРВНИЧАЕТ</small><button class="voice" id="voice" aria-label="Повторить реплику">▶ ГОЛОС</button></div><blockquote id="line"></blockquote></div>
+      <div class="case"><div class="case-head"><span id="caseTag">ПОКУПАТЕЛЬ 1 / 4</span><b id="name">МУЖЧИНА, ОКОЛО 27</b><small id="mood">ТОРОПИТСЯ</small></div><blockquote id="line"></blockquote></div>
       <div class="choices" id="choices"></div>
       <div class="stats">
-        <div><span>КАССА</span><b id="money">₽ 0</b></div>
+        <div><span>ВЕРНЫЕ РЕШЕНИЯ</span><b id="score">0 / 4</b></div>
         <div><span>ДОВЕРИЕ</span><b id="trust">50</b></div>
         <div><span>РИСК</span><b id="risk">0</b></div>
       </div>
     </section>
 
-    <div class="result" id="result" hidden>
-      <p id="resultText"></p><button id="next">СЛЕДУЮЩИЙ ПОСЕТИТЕЛЬ →</button>
-    </div>
-    <div class="ending" id="ending" hidden><div><small>СМЕНА ОКОНЧЕНА</small><h1 id="endingTitle"></h1><p id="endingText"></p><button id="restart">ЕЩЁ ОДНА СМЕНА</button></div></div>
+    <div class="result" id="result" role="status" aria-live="polite" hidden><p id="resultText"></p><button id="next">СЛЕДУЮЩИЙ ПОКУПАТЕЛЬ →</button></div>
+    <div class="ending" id="ending" hidden><div><small>СМЕНА ОКОНЧЕНА</small><h1 id="endingTitle"></h1><p id="endingText"></p><aside id="recommendation"></aside><button id="restart">К СПИСКУ СМЕН</button></div></div>
   </main>
-  <audio id="speech" preload="auto"></audio>
   <script src="app.js"></script>
 </body>
 </html>
