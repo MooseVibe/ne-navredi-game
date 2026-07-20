@@ -65,14 +65,7 @@ const shifts=[
 ];
 
 const $=id=>document.getElementById(id);
-const attemptKey='ne-navredi-shifts-attempts';
-function loadAttempts(){
- const today=new Date().toISOString().slice(0,10),saved=JSON.parse(localStorage.getItem(attemptKey)||'null');
- if(!saved)return {count:2,date:today};
- const days=Math.max(0,Math.floor((new Date(today)-new Date(saved.date))/86400000));
- return {count:Math.min(3,saved.count+days),date:today};
-}
-let attemptState=loadAttempts(),selectedShift=0,turn=0,stage=0,caseCorrect=true,attempts=attemptState.count,score=0,trust=50,risk=0,attemptSpent=false,errors=[],freeRepeat=false;
+let selectedShift=0,turn=0,stage=0,caseCorrect=true,attempts=2,score=0,trust=50,risk=0,errors=[],freeRepeat=false;
 const customer=$('customer');
 const voicePlayer=new Audio();
 let voiceEnabled=true;
@@ -100,7 +93,6 @@ function render(sameCustomer=false){
 }
 function choose(index){
  const c=shifts[selectedShift].cases[turn],step=c.steps?.[stage]||c,choice=step.choices[index],lastStage=!c.steps||stage===c.steps.length-1;
- if(!attemptSpent){attempts--;attemptSpent=true;localStorage.setItem(attemptKey,JSON.stringify({count:attempts,date:new Date().toISOString().slice(0,10)}));updateAttempts()}
  risk=Math.max(0,risk+choice[2]);trust=Math.max(0,Math.min(100,trust+choice[3]));
  if(!choice[1])caseCorrect=false;
  if(lastStage){if(caseCorrect)score++;else errors.push(c.topic)}
@@ -116,19 +108,19 @@ function choose(index){
 function finish(){
  voicePlayer.pause();
  const title=score===4?'СМЕНА БЕЗ ОШИБОК':score===3?'СМЕНА ПРИНЯТА':score===2?'ЕСТЬ РИСК':'СМЕНУ НУЖНО ПОВТОРИТЬ';
- const text=score===4?'Вы распознали все четыре ситуации. Курс сейчас не нужен — только разбор решений.':score===3?'Одна ошибка не обнуляет смену. Разберите именно её, без лишнего обучения.':score===2?'Две ошибки могли повлиять на безопасность покупателей. Начните с более критичной темы.':'Сначала короткий разбор, затем можно повторить эту смену без новой звезды.';
+ const text=score===4?'Вы распознали все четыре ситуации. Курс сейчас не нужен — только разбор решений.':score===3?'Одна ошибка не обнуляет смену. Разберите именно её, без лишнего обучения.':score===2?'Две ошибки могли повлиять на безопасность покупателей. Начните с более критичной темы.':'Сначала короткий разбор, затем можно сразу повторить смену.';
  $('endingTitle').textContent=title;$('endingText').textContent=`${score}/4 · доверие ${trust} · риск ${risk}. ${text}`;
  $('recommendation').innerHTML=score===4?'<b>НАГРАДА</b><span>Значок «Смена без ошибок» · серия идеальных смен: 1</span>':`<b>МАТЕРИАЛ ПО ОШИБКЕ</b><span>${errors[0]}</span><button type="button">ОТКРЫТЬ РАЗБОР →</button>`;
- freeRepeat=score<=1;$('restart').textContent=freeRepeat?'ПОВТОРИТЬ БЕЗ НОВОЙ ЗВЕЗДЫ':'К СПИСКУ СМЕН';
+ freeRepeat=score<=1;$('restart').textContent=freeRepeat?'ПОВТОРИТЬ СМЕНУ':'К СПИСКУ СМЕН';
  $('ending').hidden=false;
 }
-function start(isFree=false){if(!isFree&&!attempts)return;turn=0;stage=0;caseCorrect=true;score=0;trust=50;risk=0;errors=[];attemptSpent=isFree;$('score').textContent='0 / 4';$('trust').textContent=50;$('risk').textContent=0;document.body.classList.remove('not-started');$('intro').hidden=true;render()}
-$('start').onclick=()=>start(false);
+function start(){turn=0;stage=0;caseCorrect=true;score=0;trust=50;risk=0;errors=[];$('score').textContent='0 / 4';$('trust').textContent=50;$('risk').textContent=0;document.body.classList.remove('not-started');$('intro').hidden=true;render()}
+$('start').onclick=start;
 $('changeShift').onclick=()=>{selectedShift=(selectedShift+1)%2;$('shiftName').textContent=String(selectedShift+1).padStart(2,'0')};
 $('sound').onclick=()=>{voiceEnabled=!voiceEnabled;voicePlayer.pause();updateSoundButton();if(voiceEnabled){const c=shifts[selectedShift].cases[turn];playVoice(c.steps?.[stage]||c)}};
 $('repeatVoice').onclick=()=>{voiceEnabled=true;updateSoundButton();const c=shifts[selectedShift].cases[turn];playVoice(c.steps?.[stage]||c)};
 $('choices').onclick=e=>{const button=e.target.closest('button');if(button&&!button.disabled)choose(+button.dataset.i)};
 $('next').onclick=()=>{const c=shifts[selectedShift].cases[turn];$('result').hidden=true;if(c.steps&&stage<c.steps.length-1){stage++;render(true);return}stage=0;caseCorrect=true;if(++turn===4)finish();else render()};
-$('restart').onclick=()=>{voicePlayer.pause();if(freeRepeat){$('ending').hidden=true;freeRepeat=false;start(true);return}$('ending').hidden=true;$('intro').hidden=false;document.body.classList.add('not-started');selectedShift=(selectedShift+1)%2;$('shiftName').textContent=String(selectedShift+1).padStart(2,'0');$('start').disabled=!attempts;$('start').textContent=attempts?'НАЧАТЬ СМЕНУ →':'НОВЫЕ СМЕНЫ — ЗАВТРА'};
+$('restart').onclick=()=>{voicePlayer.pause();if(freeRepeat){$('ending').hidden=true;freeRepeat=false;start();return}$('ending').hidden=true;$('intro').hidden=false;document.body.classList.add('not-started');selectedShift=(selectedShift+1)%2;$('shiftName').textContent=String(selectedShift+1).padStart(2,'0')};
 updateSoundButton();updateAttempts();render();
 console.assert(shifts.every(shift=>shift.cases.length===4)&&shifts[0].cases[2].steps.length===2&&shifts[0].cases[3].steps.length===3,'Сценарий смен повреждён');
