@@ -40,32 +40,46 @@ const shifts=[
     ['Лучше сразу ЛинАква Форте 2,1% — чем больше соли, тем эффективнее.',false,18,-8,'Гипертонический раствор нельзя автоматически считать лучшим вариантом для обычного промывания.','assets/products/linaqua-forte.png','2,1% · 150 мл · 2+ · струя'] ]}
   ]}
  ]},
- {title:'ВСЕ УЖЕ ЗНАЮТ, ЧТО ИМ НУЖНО',cases:[
-  {person:'МУЖЧИНА, ОКОЛО 58',mood:'ВОДИТЕЛЬ · УВЕРЕН',tag:'«СИНИЙ КОТ»',skin:'#c59570',coat:'#48546b',hair:'#7a7067',line:'Дочка сказала купить «синий кот». Ну, от кашля который. Коробка вроде синяя. Давайте его, я машину у входа бросил.',topic:'Алгоритм консультации при кашле',choices:[
-   ['Сразу принести Синекод: название почти совпало.',false,18,-7,'Угадать название недостаточно: препарат оказался нужен пятилетнему внуку с влажным кашлем.'],
-   ['Уточнить, кому препарат, какой кашель, сколько длится и есть ли тревожные симптомы.',true,-3,11,'Верно. Смешное название не отменяет нормальную консультацию.'],
-   ['Предложить любой сироп синего цвета.',false,20,-9,'Цвет упаковки — плохая клиническая опора.'],
-   ['Попросить фотографию упаковки и больше ничего не спрашивать.',false,4,-2,'Фото поможет с названием, но не с уместностью препарата.'] ]},
-  {person:'МУЖЧИНА, ОКОЛО 40',mood:'ГОВОРИТ В НОС · НЕ ТРЕВОЖИТСЯ',tag:'«КАПЛИ ПОМОЩНЕЕ»',skin:'#d2a07d',coat:'#414e48',hair:'#302925',line:'Дайте капли помощнее. Эти уже перестали пробивать. Да обычный насморк, недели три капаю, может четыре. Без них вообще не дышу.',topic:'Медикаментозный ринит',choices:[
-   ['Предложить ксилометазолин большей концентрации.',false,31,-12,'Повышение концентрации может усилить проблему.'],
-   ['Автоматически сменить действующее вещество.',false,22,-8,'Другой сосудосуживающий препарат не заменяет оценку врача.'],
-   ['Объяснить риск медикаментозного ринита и направить к ЛОР-врачу.',true,-6,14,'Верно. Важной оказалась длительность применения, а не сила капель.'],
-   ['Продать тот же препарат, но попросить применять реже.',false,25,-9,'Совет не решает ситуацию длительного злоупотребления.'] ]},
-  {person:'ЖЕНЩИНА, ОКОЛО 44',mood:'СОБРАННА · ЗНАЕТ ПРЕПАРАТЫ',tag:'«Я ИХ ЧЕРЕДУЮ»',skin:'#af795f',coat:'#5f5368',hair:'#252127',line:'Мне опять упаковку обезболивающего. Голова почти каждый день. Я чередую: парацетамол, ибупрофен и комбинированные, чтобы организм не привыкал. Так уже месяца четыре. Сегодня что лучше взять?',topic:'Лекарственно-индуцированная головная боль',choices:[
-   ['Продать средство с другим действующим веществом.',false,25,-10,'Чередование препаратов не устраняет риск лекарственно-индуцированной боли.'],
-   ['Предложить более сильный комбинированный анальгетик.',false,34,-14,'Усиление терапии без оценки может ухудшить ситуацию.'],
-   ['Уточнить частоту приёма, объяснить возможную связь с болью и рекомендовать врача.',true,-7,15,'Верно. Почти ежедневный приём месяцами — ключевой сигнал.'],
-   ['Продать маленькую упаковку для ограничения.',false,18,-6,'Размер упаковки не заменяет маршрутизацию.'] ]},
-  {person:'ЖЕНЩИНА, ОКОЛО 67',mood:'ДЕРЖИТСЯ ЗА ОДИН ГЛАЗ',tag:'«НАВЕРНОЕ, МИГРЕНЬ»',skin:'#d7aa8d',coat:'#374450',hair:'#c8c3b8',line:'Наверное, мигрень разыгралась. Слева глаз ломит и голова над ним, всё как в тумане. На фонари смотрю — вокруг цветные круги. Ещё подташнивает. Дайте что-нибудь сильное, я домой пойду полежу.',topic:'Красный болезненный глаз',choices:[
-   ['Продать средство от мигрени и посоветовать темноту.',false,42,-17,'Сочетание симптомов не похоже на безопасный сценарий самолечения.'],
-   ['Предложить обезболивающее и капли от покраснения.',false,37,-15,'Это может задержать неотложную помощь.'],
-   ['Срочно направить за неотложной офтальмологической помощью.',true,-10,18,'Верно. Болезненный глаз, туман, ореолы и тошнота — неотложная ситуация.'],
-   ['Измерить давление и при нормальном результате отпустить домой.',false,30,-11,'Нормальное давление не исключает острую офтальмологическую проблему.'] ]}
+ {title:'КАЖДЫЙ УВЕРЕН В СВОЕЙ СХЕМЕ',cases:[
+  {person:'МУЖЧИНА ПОСЛЕ КАРАОКЕ',mood:'ПОМЯТЫЙ ПИДЖАК · СВОЙ В ДОСКУ',tag:'«Я ЧЕЛОВЕК НАДЁЖНЫЙ»',skin:'#c59570',coat:'#403d52',hair:'#292321',line:'Слушай, выручай. Ночь была длинная, голова гудит, уснуть вообще не могу. Дай пару таблеток феназепама без этих ваших бумажек. Я человек надёжный, всё будет чётко.',audio:'assets/audio/shift-02/01-karaoke.wav',topic:'Рецептурный отпуск феназепама',choices:[
+   ['Отказать в отпуске без рецепта и не подбирать «что-нибудь такое же».',true,-5,12,'Верно. Доверительный тон не меняет правил отпуска и не делает замену безопасной.'],
+   ['Продать одну таблетку: одна не считается упаковкой.',false,35,-14,'Количество таблеток не отменяет требований к отпуску препарата.'],
+   ['Предложить запить таблетку кофе, чтобы «выровнять эффект».',false,42,-18,'Сочетание советов не делает незаконный и опасный отпуск допустимым.'],
+   ['Попросить оставить залог и принести рецепт вечером.',false,30,-12,'Залог не заменяет рецепт.'] ]},
+  {person:'ДЕДУШКА-ИНЖЕНЕР',mood:'СЧИТАЕТ В УМЕ · СПОРИТ С ДОЗАТОРОМ',tag:'«МАТЕМАТИКА ЖЕ»',skin:'#d0a17f',coat:'#55615c',hair:'#aaa49b',line:'Внучке четыре, нос заложило. Дома Оксифрин взрослый — двадцать два с половиной микрограмма. Если нажать не до конца, получится половина дозы. Математика же. Или всё-таки нужен другой флакон?',audio:'assets/audio/shift-02/02-engineer.wav',topic:'Оксифрин: детская концентрация и режим',choices:[
+   ['22,5 мкг/доза: половина нажатия в каждую ноздрю один раз в день.',false,18,-8,'Частичное нажатие взрослого дозатора не обеспечивает точную детскую дозу.'],
+   ['11,25 мкг/доза: одно полное впрыскивание в каждую ноздрю 2–3 раза в сутки, курс 5–7 дней.',true,-3,12,'Верно. Для ребёнка четырёх лет нужна детская дозировка 11,25 мкг/доза.'],
+   ['11,25 мкг/доза: два впрыскивания в каждую ноздрю каждые четыре часа.',false,24,-10,'Концентрация выбрана верно, но режим превышает указанный в инструкции.'],
+   ['0,01% капли для младенцев: пять капель до исчезновения заложенности.',false,21,-9,'Форма и режим не соответствуют возрасту и инструкции.'] ]},
+  {person:'ФЛОРИСТКА ПОСЛЕ РАЗГРУЗКИ',mood:'ГЛАЗА СЛЕЗЯТСЯ · ГОВОРИТ БЫСТРО',tag:'«ОПЯТЬ БЕРЁЗА»',skin:'#b97762',coat:'#65765d',hair:'#3c2826',topic:'Сезонный аллергический конъюнктивит и олопатадин',steps:[
+   {label:'ДЕЙСТВУЮЩЕЕ ВЕЩЕСТВО',line:'У меня каждую весну одно и то же: оба глаза чешутся, слёзы текут, красные. Гноя нет, не болят, вижу нормально. На складе сегодня берёзу разгружали — и всё, приехали. Дайте капли, только не такие, после которых я усну стоя.',audio:'assets/audio/shift-02/03-allergy.wav',choices:[
+    ['Хлорамфеникол',false,15,-7,'Антибиотик не соответствует описанному сезонному аллергическому сценарию.'],
+    ['Натрия гиалуронат',false,6,-3,'Увлажняющие капли могут облегчать сухость, но это не выбранное противоаллергическое вещество.'],
+    ['Олопатадин',true,-3,10,'Верно. Олопатадин применяется при симптомах сезонного аллергического конъюнктивита.'],
+    ['Тетризолин',false,10,-5,'Уменьшение красноты не равно терапии сезонной аллергической реакции.'] ]},
+   {label:'ВЫБОР УПАКОВОК',line:'Оло… как его? Я это название до кассы не донесу. Покажите на коробках, какие именно с этим веществом.',audio:'assets/audio/shift-02/03-packages.wav',multi:true,choices:[
+    ['Олоридин 0,1% · Solopharm',true,0,0,'','', 'олопатадин'],
+    ['Опатанол 0,1%',true,0,0,'','', 'олопатадин'],
+    ['Визин Аллерджи',false,0,0,'','', 'левокабастин'],
+    ['Левомицетин, глазные капли',false,0,0,'','', 'хлорамфеникол'] ]}
+  ]},
+  {person:'БЫВШАЯ ТЕАТРАЛЬНАЯ КОСТЮМЕРША',mood:'СЛАБОЕ ЗРЕНИЕ · НЕ ЛЮБИТ СЮСЮКАНЬЕ',tag:'«ТАБЛЕТНИЦА ПОДВЕЛА»',skin:'#d2a78c',coat:'#4e5262',hair:'#c8c0b5',topic:'Ошибка дозирования метотрексата',steps:[
+   {label:'НАЙТИ ОПАСНУЮ ДЕТАЛЬ',line:'Милый человек, дайте хороший гель от язвочек во рту. И ещё слабость какая-то, синяки сами появляются. Неделю назад ревматолог добавил маленькие таблетки для суставов. Я их в таблетницу ко всем утренним положила — чтоб не забывать.',audio:'assets/audio/shift-02/04-pillbox.wav',choices:[
+    ['Таблетки маленькие.',false,4,-2,'Размер таблетки сам по себе не объясняет срочность ситуации.'],
+    ['Покупательница пользуется таблетницей.',false,5,-2,'Таблетница важна как контекст, но опасность определяется схемой и симптомами.'],
+    ['Новый препарат принимается ежедневно, а появились язвы во рту, слабость и синяки.',true,-7,14,'Верно. Сочетание новой схемы и системных симптомов требует проверки на лекарственную ошибку.'],
+    ['Она просит гель, а не раствор для полоскания.',false,8,-4,'Выбор местной формы не решает возможную системную проблему.'] ]},
+   {label:'СРОЧНОЕ РЕШЕНИЕ',line:'Называется метотрексат. На наклейке что-то про понедельник, но разве лечение бывает раз в неделю? Я шесть дней подряд пила, как все нормальные таблетки.',audio:'assets/audio/shift-02/04-methotrexate.wav',choices:[
+    ['Продать гель и попросить прийти, если за три дня не станет лучше.',false,40,-17,'Местное средство может замаскировать симптомы и задержать срочную помощь.'],
+    ['Пропустить следующий понедельник и затем продолжить прежнюю схему.',false,34,-15,'Самостоятельная коррекция после возможной передозировки недостаточна.'],
+    ['Дать сорбент, чтобы уменьшить всасывание уже принятых таблеток.',false,37,-16,'После шести дней приёма это не заменяет срочную медицинскую оценку.'],
+    ['Не маскировать симптомы; объяснить риск передозировки и направить за срочной медицинской помощью.',true,-12,18,'Верно. Ежедневный приём недельного метотрексата и симптомы токсичности требуют срочной помощи.'] ]}
+  ]}
  ]}
 ];
 
 const $=id=>document.getElementById(id);
-let selectedShift=0,turn=0,stage=0,caseCorrect=true,attempts=2,score=0,trust=50,risk=0,errors=[],freeRepeat=false;
+let selectedShift=0,turn=0,stage=0,caseCorrect=true,attempts=2,score=0,trust=50,risk=0,errors=[],freeRepeat=false,multiSelected=new Set();
 const customer=$('customer');
 const voicePlayer=new Audio();
 let voiceEnabled=true;
@@ -83,16 +97,17 @@ function stars(){return '★'.repeat(attempts)+'☆'.repeat(3-attempts)}
 function updateAttempts(){ $('stars').textContent=stars();$('topStars').textContent=stars();$('attemptText').textContent=`ДОСТУПНО ${attempts} ${attempts===1?'СМЕНА':'СМЕНЫ'}` }
 function render(sameCustomer=false){
  const c=shifts[selectedShift].cases[turn],step=c.steps?.[stage]||c,totalStages=c.steps?.length||1;
+ multiSelected.clear();
  $('shiftNumber').textContent=String(selectedShift+1).padStart(2,'0');
  $('progress').textContent=`${String(turn+1).padStart(2,'0')} / 04`;
  $('progressBar').style.width=`${(turn+1)*25}%`;
  $('caseTag').textContent=totalStages>1?`ПОКУПАТЕЛЬ ${turn+1} / 4 · ЭТАП ${stage+1} ИЗ ${totalStages}`:`ПОКУПАТЕЛЬ ${turn+1} / 4`;$('name').textContent=c.person;$('mood').textContent=c.mood;$('line').textContent=step.line;$('badge').textContent=totalStages>1?step.label:c.tag;
  customer.style.setProperty('--skin',c.skin);customer.style.setProperty('--coat',c.coat);customer.querySelector('.hair').style.background=c.hair;
- $('choices').className=`choices ${step.visual||''}`;$('choices').innerHTML=step.choices.map((choice,i)=>`<button class="choice" data-i="${i}"><b>${i+1}</b>${choice[5]?`<img src="${choice[5]}" alt="">`:''}<span>${choice[0]}${choice[6]?`<small>${choice[6]}</small>`:''}</span></button>`).join('');
+ $('choices').className=`choices ${step.visual||''}`;$('choices').innerHTML=step.choices.map((choice,i)=>`<button class="choice" data-i="${i}"${step.multi?' aria-pressed="false"':''}><b>${i+1}</b>${choice[5]?`<img src="${choice[5]}" alt="">`:''}<span>${choice[0]}${choice[6]?`<small>${choice[6]}</small>`:''}</span></button>`).join('')+(step.multi?'<button class="confirm-multi" data-action="confirm" disabled>ПРОВЕРИТЬ ВЫБОР →</button>':'');
  $('queue').innerHTML='<i></i>'.repeat(3-turn);customer.className=sameCustomer?'customer':'customer enter';$('sound').hidden=!step.audio;$('repeatVoice').hidden=!step.audio||document.body.classList.contains('not-started');if(!document.body.classList.contains('not-started')){$('line').focus({preventScroll:true});playVoice(step)}
 }
-function choose(index){
- const c=shifts[selectedShift].cases[turn],step=c.steps?.[stage]||c,choice=step.choices[index],lastStage=!c.steps||stage===c.steps.length-1;
+function choose(index,override){
+ const c=shifts[selectedShift].cases[turn],step=c.steps?.[stage]||c,choice=override||step.choices[index],lastStage=!c.steps||stage===c.steps.length-1;
  risk=Math.max(0,risk+choice[2]);trust=Math.max(0,Math.min(100,trust+choice[3]));
  if(!choice[1])caseCorrect=false;
  if(lastStage){if(caseCorrect)score++;else errors.push(c.topic)}
@@ -101,7 +116,7 @@ function choose(index){
  $('resultText').innerHTML=`<strong>${resultTitle}</strong><small>${choice[4]}</small>`;
  const resultCorrect=lastStage?caseCorrect:choice[1];
  $('result').className=`result ${resultCorrect?'correct':'wrong'}`;$('result').hidden=false;
- $('choices').querySelectorAll('button').forEach((button,i)=>{button.disabled=true;if(i===index)button.classList.add(choice[1]?'selected-correct':'selected-wrong')});
+ $('choices').querySelectorAll('button').forEach((button,i)=>{button.disabled=true;if(override&&button.dataset.i!==undefined){if(multiSelected.has(i))button.classList.add(step.choices[i][1]?'selected-correct':'selected-wrong')}else if(i===index)button.classList.add(choice[1]?'selected-correct':'selected-wrong')});
  $('next').textContent=lastStage?(turn===3?'ЗАВЕРШИТЬ СМЕНУ →':'СЛЕДУЮЩИЙ ПОКУПАТЕЛЬ →'):`ПРОДОЛЖИТЬ · ЭТАП ${stage+2} ИЗ ${c.steps.length} →`;$('next').focus();
  if(lastStage)customer.classList.add('exit');
 }
@@ -119,8 +134,8 @@ $('start').onclick=start;
 $('changeShift').onclick=()=>{selectedShift=(selectedShift+1)%2;$('shiftName').textContent=String(selectedShift+1).padStart(2,'0')};
 $('sound').onclick=()=>{voiceEnabled=!voiceEnabled;voicePlayer.pause();updateSoundButton();if(voiceEnabled){const c=shifts[selectedShift].cases[turn];playVoice(c.steps?.[stage]||c)}};
 $('repeatVoice').onclick=()=>{voiceEnabled=true;updateSoundButton();const c=shifts[selectedShift].cases[turn];playVoice(c.steps?.[stage]||c)};
-$('choices').onclick=e=>{const button=e.target.closest('button');if(button&&!button.disabled)choose(+button.dataset.i)};
+$('choices').onclick=e=>{const button=e.target.closest('button');if(!button||button.disabled)return;const c=shifts[selectedShift].cases[turn],step=c.steps?.[stage]||c;if(button.dataset.action==='confirm'){const correct=step.choices.every((choice,i)=>choice[1]===multiSelected.has(i));choose(-1,[null,correct,correct?-3:14,correct?11:-7,correct?'Верно. Все выбранные упаковки содержат олопатадин.':'Нужно выбрать все и только те упаковки, где действующее вещество — олопатадин.']);return}if(step.multi){const i=+button.dataset.i;multiSelected.has(i)?multiSelected.delete(i):multiSelected.add(i);button.classList.toggle('multi-selected');button.setAttribute('aria-pressed',String(multiSelected.has(i)));$('choices').querySelector('[data-action="confirm"]').disabled=multiSelected.size===0;return}choose(+button.dataset.i)};
 $('next').onclick=()=>{const c=shifts[selectedShift].cases[turn];$('result').hidden=true;if(c.steps&&stage<c.steps.length-1){stage++;render(true);return}stage=0;caseCorrect=true;if(++turn===4)finish();else render()};
 $('restart').onclick=()=>{voicePlayer.pause();if(freeRepeat){$('ending').hidden=true;freeRepeat=false;start();return}$('ending').hidden=true;$('intro').hidden=false;document.body.classList.add('not-started');selectedShift=(selectedShift+1)%2;$('shiftName').textContent=String(selectedShift+1).padStart(2,'0')};
 updateSoundButton();updateAttempts();render();
-console.assert(shifts.every(shift=>shift.cases.length===4)&&shifts[0].cases[2].steps.length===2&&shifts[0].cases[3].steps.length===3,'Сценарий смен повреждён');
+console.assert(shifts.every(shift=>shift.cases.length===4)&&shifts[0].cases[2].steps.length===2&&shifts[0].cases[3].steps.length===3&&shifts[1].cases[2].steps.length===2&&shifts[1].cases[3].steps.length===2,'Сценарий смен повреждён');
